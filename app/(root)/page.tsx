@@ -22,8 +22,8 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
 
   console.log({
     accountsData,
-    account
-  })
+    account,
+  });
 
   return (
     <section className="home">
@@ -32,7 +32,7 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
           <HeaderBox
             type="greeting"
             title="Welcome"
-            user={loggedIn?.name || "Guest"}
+            user={loggedIn?.firstName || "Guest"}
             subtext="Access and manage your account and transactions efficiently."
           />
           <TotalBalanceBox
