@@ -196,7 +196,7 @@ export const exchangePublicToken = async ({
     });
 
     const accessToken = response.data.access_token;
-    const itemID = response.data.item_id;
+    const itemId = response.data.item_id;
 
     //Get account information from Plaid using the access token
     const accountsResponse = await plaidClient.accountsGet({
@@ -227,14 +227,14 @@ export const exchangePublicToken = async ({
     // If the funding source URL is not created, throw an error
     if (!fundingSourceUrl) throw Error;
 
-    // Create a bank account using the user ID, item ID, account ID, access token, funding source URL, and shareableId ID
+    // Create a bank account using the user ID, item ID, account ID, access token, funding source URL, and sharableId ID
     await createBankAccount({
       userId: user.$id,
       bankId: itemId,
       accountId: accountData.account_id,
       accessToken,
       fundingSourceUrl,
-      shareableId: encryptId(accountData.account_id),
+      sharableId: encryptId(accountData.account_id),
     });
 
     // Revalidate the path to reflect the changes
