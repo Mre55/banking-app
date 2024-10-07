@@ -12,7 +12,7 @@ import {
 import { plaidClient } from "../plaid";
 import { parseStringify } from "../utils";
 
-// import { getTransactionsByBankId } from "./transaction.actions";
+import { getTransactionsByBankId } from "./transaction.actions";
 import { getBanks, getBank } from "./user.actions";
 
 // Get multiple bank accounts
@@ -199,8 +199,9 @@ export const createTransfer = async () => {
     },
   };
   try {
-    const transferAuthResponse =
-      await plaidClient.transferAuthorizationCreate(transferAuthRequest);
+    const transferAuthResponse = await plaidClient.transferAuthorizationCreate(
+      transferAuthRequest
+    );
     const authorizationId = transferAuthResponse.data.authorization.id;
 
     const transferCreateRequest: TransferCreateRequest = {
